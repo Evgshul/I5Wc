@@ -38,7 +38,7 @@ public class BlackKnight {
 		head = 1;
 		alive = true;
 			
-		if (totalKnights<knights.length) 
+		
 		knights[totalKnights]=this;
 		
 		totalKnights++;
@@ -59,7 +59,7 @@ public class BlackKnight {
 		
 		
 		if(alive==false){return "Only chicken beats dead!";}
-		if(arms < 2&& arms>0){
+		if(arms>0){
 			arms--;
 			return "Bugger!";}
 		else 
@@ -72,7 +72,7 @@ public class BlackKnight {
 
 	public String cutOffLeg() {
 		if(alive==false) return "Only chicken beats dead!";
-		if(legs < 2 && legs>0){
+		if(legs>0){
 			legs--;
 			return "Bollocks!";}
 		// TODO handle cutting off legs knight's legs in following way:
@@ -90,6 +90,11 @@ public class BlackKnight {
 	
 	    for(int i=0;i<knights.length;i++){
 		if(knights[i].alive==true)
+			
+			
+			
+			
+			
 			return "You'l newer win! "+ knights[i].name + " will still fight!";
 		
 			}
