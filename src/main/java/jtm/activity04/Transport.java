@@ -16,12 +16,53 @@ public class Transport {
 	 * And make fuel tank full.
 	 */
 
+	public Transport(String id, float consumption, int tankSize,
+			float fuelInTank) {
+		super();
+		this.id = id;
+		this.consumption = consumption;
+		this.tankSize = tankSize;
+		this.fuelInTank = fuelInTank;
+	}
 
 	/*- TODO #2
 	 * Select menu: Source — Generate getters and Setters...
 	 * and generate public getters for consumption, tankSize, id, and
 	 * fuelInTank fields
 	 */
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public float getConsumption() {
+		return consumption;
+	}
+
+	public void setConsumption(float consumption) {
+		this.consumption = consumption;
+	}
+
+	public int getTankSize() {
+		return tankSize;
+	}
+
+	public void setTankSize(int tankSize) {
+		this.tankSize = tankSize;
+	}
+
+	public float getFuelInTank() {
+		return fuelInTank;
+	}
+
+	public void setFuelInTank(float fuelInTank) {
+		this.fuelInTank = fuelInTank;
+	}
 
 	/*- TODO #3
 	 * Select menu: Source — Generate toString()...
@@ -31,13 +72,29 @@ public class Transport {
 	 *  to 2 decimal for fractions, and dot as a decimal delimiter.
 	 */
 
+	
+	
+
+	@Override
+	public String toString() {
+		return "Id :" + id + " cons:" + consumption
+				+ ", tankSize=" + tankSize + ", fuelInTank=" + fuelInTank
+				+ ", getId()=" + getId() + ", getConsumption()="
+				+ getConsumption() + ", getTankSize()=" + getTankSize()
+				+ ", getFuelInTank()=" + getFuelInTank() + ", getType()="
+				+ getType() + "]";
+	}
 
 	// Return transport id and type as string e.g. "AAA Transport"
 	// HINT: use this.getClass().getSimpleName(); to get type of transport
 	protected final String getType() {
+		
 		// TODO return required value
-		return "";
+		return id + " " + this.getClass().getSimpleName();
 	}
+
+	
+
 
 	// HINT: use getType() to describe transport and road.toString() to describe
 	// road

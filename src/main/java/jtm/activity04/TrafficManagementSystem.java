@@ -25,6 +25,7 @@ public class TrafficManagementSystem {
 	}
 
 	public static void setVehicle(Transport transport, int i) {
+		
 		// TODO set passed transport into transports array cell of passed index
 	}
 

@@ -6,6 +6,21 @@ public class Array {
 	static int[] array;
 
 	public static void main(String[] args) {
+		
+		array = new int[args.length];
+		
+		for(int i=0; i<args.length;i++){
+		array[i] = Integer.parseInt(args[i]);
+		  }
+		Arrays.sort(array);
+		
+		printSortedArray();
+		
+		returnSortedArray();
+		
+		
+		
+		
 		// TODO Use passed parameters for main method to initialize array
 		// Hint: use Run— Run configurations... Arguments to pass parameters to
 		// main method when calling from Eclipse
@@ -19,11 +34,15 @@ public class Array {
 	public static void printSortedArray() {
 		// TODO print content of array on standard output
 		// Hint: use Arrays.toString(array) method for this
+		System.out.println(Arrays.toString(array));
 	}
 
 	public static int[] returnSortedArray() {
 		// TODO return reference to this array
-		return null;
+		//int[] mass = array;
+		
+		
+		return array;
 	}
 
 }

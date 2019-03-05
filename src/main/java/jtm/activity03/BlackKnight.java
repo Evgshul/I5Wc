@@ -20,11 +20,31 @@ public class BlackKnight {
 	public boolean alive; // is knight alive
 
 	public static void setBattle(int initialNumber) {
+		
+		knights = new BlackKnight[initialNumber];
+		totalKnights = 0;
+		aliveKnights = 0;
+		
+		
 		// TODO initialize new array of knights with the passed size.
 		// Reset total numbers of total and alive knights to zero
 	}
 
 	public BlackKnight(String name) {
+		
+		this.name = name;
+		arms = 2;
+		legs = 2;
+		head = 1;
+		alive = true;
+			
+		if (totalKnights<knights.length) 
+		knights[totalKnights]=this;
+		
+		totalKnights++;
+		aliveKnights++;
+		
+		
 		// TODO set name of newly created knight
 		// 1. set proper count of his arms, legs and head,
 		// 2. set his status to alive
@@ -36,22 +56,44 @@ public class BlackKnight {
 	}
 
 	public String cutOffArm() {
+		
+		
+		if(alive==false){return "Only chicken beats dead!";}
+		if(arms < 2&& arms>0){
+			arms--;
+			return "Bugger!";}
+		else 
 		// TODO handle cutting off knight's arms in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight has some arms, cut one off and return "Bugger!"
 		// Else return just "Haah!"
-		return "";
+		return "Haah!";
 	}
 
 	public String cutOffLeg() {
+		if(alive==false) return "Only chicken beats dead!";
+		if(legs < 2 && legs>0){
+			legs--;
+			return "Bollocks!";}
 		// TODO handle cutting off legs knight's legs in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight has some legs, cut one off and return "Bollocks!"
 		// Else return just "Haah!"
-		return "";
+		return "Haah";
 	}
 
 	public String cutOffHead() {
+		if(alive==false){return "Only chicken beats dead!";}
+		if(alive==true && head==1){
+			head=0;
+			head=1;}
+	
+	    for(int i=0;i<knights.length;i++){
+		if(knights[i].alive==true)
+			return "You'l newer win! "+ knights[i].name + " will still fight!";
+		
+			}
+			
 		// TODO handle cutting off knight's head in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight is alive and has head, cut it off and update
@@ -60,7 +102,11 @@ public class BlackKnight {
 		// "You'l newer win! Arthur, Cnut will still fight!"
 		// Where "Arthur, Cnut" are names of still alive knights
 		// Else return "You'l burn in hell forever!"
-		return "";
+		return "You'l burn in hell forever!";
 	}
-
+public static void main(String[] arg){
+	BlackKnight knight = new BlackKnight ("Arthur");
+	BlackKnight knight1 = new BlackKnight ("Cnut");
+	System.out.println(knight.cutOffArm());
+}
 }
