@@ -24,8 +24,8 @@ public class Road {
 	 * values or 0 to all object properties
 	 */
      public Road(){
-        this.from = "";
-        this.to = "";
+        this.from = " ";
+        this.to = " ";
         this.distance=0;
      }
 
@@ -59,7 +59,7 @@ public class Road {
 	 * fields
 	 */
 public String toString(){
-	return "From " + from + " To, " + to + distance;
+	return "From " + from + " To " + to +"," + distance + "km";
 }
 
 	/*- TODO #4

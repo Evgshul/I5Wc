@@ -1,6 +1,6 @@
 package jtm.activity04;
 
-import java.util.Locale;
+
 
 public class Transport {
 	// Do not change access modifiers to encapsulate internal properties!
@@ -32,6 +32,7 @@ public class Transport {
 	 */
 	
 
+	
 	public String getId() {
 		return id;
 	}
@@ -77,7 +78,7 @@ public class Transport {
 
 	@Override
 	public String toString() {
-		return "Id :" + id + " cons:" + consumption
+		return "Id :" + id + " cons:" + consumption+"l/100km"
 				+ ", tankSize=" + tankSize + ", fuelInTank=" + fuelInTank
 				+ ", getId()=" + getId() + ", getConsumption()="
 				+ getConsumption() + ", getTankSize()=" + getTankSize()
@@ -101,13 +102,19 @@ public class Transport {
 	// HINT: String.format(Locale.US, "%.2f", float) to format float number with
 	// fixed mask
 	public String move(Road road) {
+		if(fuelInTank>=road.getDistance()*consumption/100){fuelInTank=fuelInTank-(fuelInTank-road.getDistance()*consumption/100);
+		return getType() + "is moving on " +road.getFrom() + " To " + road.getTo() + ", "+road.getDistance()+"km";}
+		
+		//if(fuelInTank<road.getDistance()*consumption/100){}
+		else
 		// TODO If transport has enough fuel, decrease actual amount of fuel by
 		// necessary amount and return String in form:
 		// "AAA Type is moving on From–To, 180km"
 		// TODO If there is no enough fuel in tank, return string in form:
 		// "Cannot move on From–To, 180km. Necessary
 		// fuel:0.00l, fuel in tank:0.00l"
-		return "";
+		return "Cannot move on From " + road.getFrom() + " To " + road.getTo() + ", " +road.getDistance()+"km" + ", Necessary fuel:"+road.getDistance()*consumption/100 +", fuel in tank:" + fuelInTank;
+	
 	}
 
 }
