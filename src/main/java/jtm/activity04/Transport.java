@@ -1,5 +1,7 @@
 package jtm.activity04;
 
+import java.util.Locale;
+
 
 
 public class Transport {
@@ -16,13 +18,12 @@ public class Transport {
 	 * And make fuel tank full.
 	 */
 
-	public Transport(String id, float consumption, int tankSize,
-			float fuelInTank) {
-		super();
+	public Transport(String id, float consumption, int tankSize) {
+		//super();
 		this.id = id;
 		this.consumption = consumption;
 		this.tankSize = tankSize;
-		this.fuelInTank = fuelInTank;
+		fuelInTank = tankSize;
 	}
 
 	/*- TODO #2
@@ -78,12 +79,8 @@ public class Transport {
 
 	@Override
 	public String toString() {
-		return "Id :" + id + " cons:" + consumption+"l/100km"
-				+ ", tankSize=" + tankSize + ", fuelInTank=" + fuelInTank
-				+ ", getId()=" + getId() + ", getConsumption()="
-				+ getConsumption() + ", getTankSize()=" + getTankSize()
-				+ ", getFuelInTank()=" + getFuelInTank() + ", getType()="
-				+ getType() + "]";
+		return  "Id:" + id + " cons:" + String.format(Locale.US, "%.1f", consumption)+"l/100km"
+				+ ", tank:" + tankSize + "l, fuel:" + String.format(Locale.US, "%.2f", fuelInTank)+"l";
 	}
 
 	// Return transport id and type as string e.g. "AAA Transport"
@@ -102,8 +99,9 @@ public class Transport {
 	// HINT: String.format(Locale.US, "%.2f", float) to format float number with
 	// fixed mask
 	public String move(Road road) {
-		if(fuelInTank>=road.getDistance()*consumption/100){fuelInTank=fuelInTank-(fuelInTank-road.getDistance()*consumption/100);
-		return getType() + "is moving on " +road.getFrom() + " To " + road.getTo() + ", "+road.getDistance()+"km";}
+		float needFuel = road.getDistance()*consumption/100;
+		if(fuelInTank>=needFuel){fuelInTank=fuelInTank-needFuel;
+		return getType() + " is moving on " +road.getFrom() + " — " + road.getTo() + ", "+road.getDistance()+"km";}
 		
 		//if(fuelInTank<road.getDistance()*consumption/100){}
 		else
@@ -113,7 +111,7 @@ public class Transport {
 		// TODO If there is no enough fuel in tank, return string in form:
 		// "Cannot move on From–To, 180km. Necessary
 		// fuel:0.00l, fuel in tank:0.00l"
-		return "Cannot move on From " + road.getFrom() + " To " + road.getTo() + ", " +road.getDistance()+"km" + ", Necessary fuel:"+road.getDistance()*consumption/100 +", fuel in tank:" + fuelInTank;
+		return "Cannot move on From " + road.getFrom() + " To " + road.getTo() + ", " +road.getDistance()+"km" + ", Necessary fuel:"+ needFuel +", fuel in tank:" + fuelInTank;
 	
 	}
 

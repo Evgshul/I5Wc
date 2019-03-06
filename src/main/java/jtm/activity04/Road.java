@@ -13,7 +13,7 @@ public class Road {
 	 * values of the newly created object
 	 */
 	public Road(String from, String to, int distance) {
-		super();
+		//super();
 		this.from = from;
 		this.to = to;
 		this.distance = distance;
@@ -24,9 +24,9 @@ public class Road {
 	 * values or 0 to all object properties
 	 */
      public Road(){
-        this.from = " ";
-        this.to = " ";
-        this.distance=0;
+        this.from = "";
+        this.to = "";
+        this.distance = 0;
      }
 
 	public String getFrom() {
@@ -59,7 +59,7 @@ public class Road {
 	 * fields
 	 */
 public String toString(){
-	return "From " + from + " To " + to +"," + distance + "km";
+	return from + " — " + to + ", " + distance + "km";
 }
 
 	/*- TODO #4
