@@ -16,9 +16,11 @@ public class Vehicle extends Transport {
 	public String move(Road road) {
 		
 		if(road.getClass() == Road.class){
-			return super.getId()+" Vehicle is driving on " + road.toString() + " whith "+ wheels +" wheels ";}
+			String s = super.move(road);
+			s.replace("moving", "driving");		
+			return s.replace("moving", "driving") + " with "+ wheels +" wheels";}
 		
-		else return "Cannot drive on" + road.toString() + "if it is not Road.";
+		else return "Cannot drive on " + road.toString();
 	}
 	
 

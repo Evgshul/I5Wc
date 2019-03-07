@@ -4,8 +4,7 @@ import jtm.activity04.Road;
 import jtm.activity04.Transport;
 
 public class Amphibia extends Transport {
-	private Ship ship;
-	private Vehicle vehicle;
+	
 	private byte sails;
 	private int wheels;
 
@@ -19,12 +18,17 @@ public class Amphibia extends Transport {
 	@Override
 	public String move(Road road) {
 		
-		if(road.getClass() == Road.class){ return this.getClass().getSimpleName() + "behaves like a" + vehicle.getClass().getSimpleName()+ "on ground road";
+		if(road.getClass() == Road.class){
+		String s = super.move(road);
+		s.replace("moving", "driving");		
+		return s.replace("moving", "driving") + " with "+ wheels + " wheels";
 		}
-		//if(road instanceof WaterRoad)
-		else return this.getClass().getSimpleName() + "behaves like a" + ship.getClass().getSimpleName() + "on water road";
+		
+		if(road instanceof WaterRoad)
+		return this.getId() + " Amphibia is sailing on " + road.toString() + " with " + sails + " sails";
+		else return null;
 	}
 	
 	
-
+	
 }

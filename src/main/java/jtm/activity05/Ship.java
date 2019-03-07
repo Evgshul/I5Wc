@@ -18,11 +18,11 @@ public class Ship extends Transport {
 
 	@Override
 	public String move(Road road) {
-		// TODO Auto-generated method stub
+	
 		if(road instanceof WaterRoad){
-		return this.getId() + " Ship is sailing on " + road.toString() + "whith" + sails + " sails " ;
+		return this.getId() + " Ship is sailing on " + road.toString() + " with " + sails + " sails";
 		}
-		else return "Cannot sail on" + road.toString() + "if it is not WaterRoad.";
+		else return "Cannot sail on " + road.toString();
 	}
 		
 }

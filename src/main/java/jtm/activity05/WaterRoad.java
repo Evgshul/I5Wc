@@ -3,11 +3,11 @@ package jtm.activity05;
 import jtm.activity04.Road;
 
 public class WaterRoad extends Road {
-	private Road road;
+	//private Road road;
 
 	public WaterRoad(String from, String to, int distance) {
 		super(from, to, distance);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public WaterRoad() {
@@ -16,8 +16,8 @@ public class WaterRoad extends Road {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "Water Road from "+ road.getFrom() +"—"+ road.getTo() + ", "+ road.getDistance() + "km";
+		
+		return this.getClass().getSimpleName() + " "+super.toString();
 		
 	}
 
