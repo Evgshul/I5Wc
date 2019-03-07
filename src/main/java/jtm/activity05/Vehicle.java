@@ -7,17 +7,19 @@ public class Vehicle extends Transport {
 	protected int wheels;
 
 	public Vehicle(String id, float consumption, int tankSize, int wheels) {
-		super(id, consumption, tankSize, 0);
+		super(id, consumption, tankSize);
 		this.wheels = wheels;
 		
 	}
 
 	@Override
 	public String move(Road road) {
-		// TODO Auto-generated method stub
-		return this.getId()+" Vehicle is driving on " + road.getClass().getSimpleName() + " whith "+ wheels +" wheels ";
+		
+		if(road.getClass() == Road.class){
+			return super.getId()+" Vehicle is driving on " + road.toString() + " whith "+ wheels +" wheels ";}
+		
+		else return "Cannot drive on" + road.toString() + "if it is not Road.";
 	}
-	
 	
 
 }

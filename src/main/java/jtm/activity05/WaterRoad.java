@@ -11,13 +11,13 @@ public class WaterRoad extends Road {
 	}
 
 	public WaterRoad() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Water Road from "+ road.getFrom() +"To"+ road.getTo() + ", "+ road.getDistance() + "km";
+		return "Water Road from "+ road.getFrom() +"—"+ road.getTo() + ", "+ road.getDistance() + "km";
 		
 	}
 
