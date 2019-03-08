@@ -1,5 +1,11 @@
 package jtm.activity09;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.List;
+
 
 /*- TODO #2
  * Implement Iterator interface with Orders class
@@ -8,11 +14,11 @@ package jtm.activity09;
  * TODO #3 Override/implement public methods for Orders class:
  * - Orders()                — create new empty Orders
  * - add(Order item)            — add passed order to the Orders
- * - List<Order> getItemsList() — List of all customer orders
- * - Set<Order> getItemsSet()   — calculated Set of Orders from list (look at description below)
+ * - List<Order> getItemsList() ok— List of all customer orders
+ * - Set<Order> getItemsSet()  ok — calculated Set of Orders from list (look at description below)
  * - sort()                     — sort list of orders according to the sorting rules
- * - boolean hasNext()          — check is there next Order in Orders
- * - Order next()               — get next Order from Orders, throw NoSuchElementException if can't
+ * - boolean hasNext()    ok      — check is there next Order in Orders
+ * - Order next()          ok     — get next Order from Orders, throw NoSuchElementException if can't
  * - remove()                   — remove current Order (order got by previous next()) from list, throw IllegalStateException if can't
  * - String toString()          — show list of Orders as a String
  * 
@@ -29,7 +35,47 @@ package jtm.activity09;
  *  - ItemN: Customer1,Customer2: 4
  */
 
-public class Orders {
+public class Orders implements Iterator<Order> {
+
+	
+	List<Order> orders;
+	int index=-1;
+	Iterator iterator;
+	
+	
+	public Orders(){
+		orders = new LinkedList<Order>();
+		iterator=orders.iterator();
+	}
+	@Override
+	public boolean hasNext() {
+		
+		return iterator.hasNext();
+	}
+
+	@Override
+	public Order next() {
+		
+		if(hasNext())
+			this.index+=1;
+				
+									
+		return (Order)iterator.next();
+	}
+	
+	public Set<Order> getItemsSet(){
+		Set orderSet = new TreeSet();
+		return orderSet;
+	}
+	
+		public void add(Order item){
+			this.orders.add(item);
+		}
+		
+		public void remove(){
+			orders.remove(index -2);
+		}
+	
 	/*-
 	 * TODO #1
 	 * Create data structure to hold:

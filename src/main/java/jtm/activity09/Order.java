@@ -25,11 +25,81 @@ package jtm.activity09;
  * 
  */
 
-public class Order implements Iterator<Order> {
+public class Order implements Comparable<Object> {
 	String customer; // Name of the customer
 	String name; // Name of the requested item
 	int count; // Count of the requested items
 	
 	
+	
+	public Order(String orderer, String itemName, Integer count){
+		customer=orderer;
+        name=itemName;
+        this.count=count;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		
+						
+		return 0;
+	}
+	
+	public int compareTo(Order order){
+		
+		int res = this.name.compareTo(order.name);
+		if(res==0){
+			res=this.customer.compareTo(order.customer);
+				
+				return this.count-order.count;
+			}
+		
+		
+		return 0;
+	}
 
+	
+	
+	public String toString(){
+		return name+ " " +customer + " " + count;
+	}
+	
+			
+	@Override
+	public int hashCode() {
+		return this.toString().hashCode();
+	}
+	
+	/*@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (count != other.count)
+			return false;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}*/
+   @Override
+	public boolean equals(Object obj){
+	   
+	if(obj instanceof Order){
+		int res;
+		res = compareTo(obj);
+				if(res==0) return true;
+	} return false;
+	}
 }

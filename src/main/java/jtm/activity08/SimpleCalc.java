@@ -11,12 +11,12 @@ public class SimpleCalc {
 	// TODO specify that method can throw SimpleCalcException
 	public static int add(int a, int b)throws SimpleCalcException{
 			int sum = a + b;
-			try{
-				int sum = a + b;
-			if(sum>10)
-				}catch (SimpleCalcException e){
+			
+			if(sum<10&&sum>-10)}
+				
+	
 				System.out.println(sum + " bigger then 10 " );
-			}
+			
 		
 		return sum;
 	}

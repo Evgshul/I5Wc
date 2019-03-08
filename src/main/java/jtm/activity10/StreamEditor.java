@@ -49,19 +49,40 @@ public class StreamEditor {
 		 * Please use arguments: [-]lineNo (TextToAdd/Replace|-) (inputFile|-) (outputFile|-)
 		 * and exit with System.exit(1); to pass error status of finished program.
 		 */
+		
+		if(args.length<4){
+			System.err.println("Please use arguments: [-]lineNo (TextToAdd/Replace|-) (inputFile|-) (outputFile|-");
+			System.exit(1);
+		}
 
 		// TODO Get integer from the 1st argument. Note that line should be
 		// deleted if number is negative.
 		// Hint. Use Integer.parseInt() to parse String into integer
-
+		
+		
+		int num = Integer.parseInt(args[0]);
+		if(num<0)args[0]=" ";
+		else
+		
 		// TODO set value of the string from 1st parameter into content
-
+        content = args[0];
+		
 		/*- TODO Initialize new buffered character reader (BufferedReader) and:
 		 * 1. If input file name (3rd parameter) is "-", add reader to the Standard input (System.in).
 		 * 2. Otherwise check if file exists (if it doesn't, create it) and 
 		 *    add reader to this file.
 		 */
-
+		
+		//inFileName=args[2];
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader in2 = new BufferedReader(new FileReader(new File(args[2])));
+		
+		if(in2.equals("-") 
+		File file = new File(inFileName);
+		if(file.exists())file=new File(in.readLine());
+		
+		BufferedReader in2 = new BufferedReader(new FileReader(new File(args[2])));
+		
 		/*- TODO Initialize new buffered character writer (PrintWriter) and:
 		 *  1. If output file name (4th parameter) is "-", add writer to the standard output (System.out)
 		 *  2. Otherwise initialize writer to the file of given name.

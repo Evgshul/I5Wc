@@ -8,11 +8,13 @@
 /home/student/workspace/I5Wc/src/main/java/jtm/activity10/StreamEditorTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra02/ArrayListMethodsTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity06/Humanoid.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity06/Martian.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra01/GetOne.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra05/XMLCarTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/testSuite/AllTests.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity15/ColorSliderTestSuite.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra07/ChatClientTest1.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity08/SimpleCalcException.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra06/RegEx.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra06/RegExTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra07/ChatClient.java
@@ -20,9 +22,11 @@
 /home/student/workspace/I5Wc/src/main/java/jtm/activity09/Order.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra03/PracticalNumbersTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity03/ArrayTest1.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity05/Amphibia.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity14/Student.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra01/ZodiacTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra10/Log.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity06/Human.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity04/TrafficManagementTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity08/SimpleCalcTests1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra08/InvoiceManager.java
@@ -37,6 +41,7 @@
 /home/student/workspace/I5Wc/src/main/java/jtm/extra10/LogTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra09/Crocodile.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity04/Transport.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity05/Ship.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity17/SeleniumWebDriverTest.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity01/ConfigurationTest1.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra06/GenericsTest1.java
@@ -78,8 +83,10 @@
 /home/student/workspace/I5Wc/src/main/java/jtm/extra09/GameFactory.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity04/Road.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity04/TrafficManagementSystem.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity05/Vehicle.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra12/JNIClass.java
 /home/student/workspace/I5Wc/src/main/java/jtm/extra08/Invoice.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity17/JettyApplicationTest.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity15/ColorSlider.java
+/home/student/workspace/I5Wc/src/main/java/jtm/activity05/WaterRoad.java
 /home/student/workspace/I5Wc/src/main/java/jtm/activity13/Teacher.java
