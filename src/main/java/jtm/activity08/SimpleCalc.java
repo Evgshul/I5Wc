@@ -9,29 +9,39 @@ package jtm.activity08;
 public class SimpleCalc {
 
 	// TODO specify that method can throw SimpleCalcException
-	public static int add(int a, int b)
-			{
-		// TODO implement adding operation
-		return 0;
+	public static int add(int a, int b)throws SimpleCalcException{
+			int sum = a + b;
+			try{
+				int sum = a + b;
+			if(sum>10)
+				}catch (SimpleCalcException e){
+				System.out.println(sum + " bigger then 10 " );
+			}
+		
+		return sum;
 	}
 
 	// TODO specify that method can throw SimpleCalcException
-	public static int subtract(int a, int b)
+	public static int subtract(int a, int b)throws SimpleCalcException
 			{
+		
+		int res = a-b;
 		// TODO implement subtract operation
 		return 0;
 	}
 
 	// TODO specify that method can throw SimpleCalcException
-	public static int multiply(int a, int b)
+	public static int multiply(int a, int b)throws SimpleCalcException
 			{
+		int resmul = a * b;
 		// TODO implement multiply operation
 		return 0;
 	}
 
 	// TODO specify that method can throw SimpleCalcException
-	public static int divide(int a, int b)
+	public static int divide(int a, int b)throws SimpleCalcException
 			{
+		int resdiv = a/b;
 		// TODO implement divide operation
 		return 0;
 	}
@@ -57,8 +67,13 @@ public class SimpleCalc {
 	// if (long && complicated || statement)
 	// assert false: "message if statement not fulfilled";
 	//
-	private static void validateInput(int a, int b) {
+	private static void validateInput(int a, int b)throws SimpleCalcException {
 
+		
+		//int res = 0;
+		//switch (oper){
+		
+		//}
 	}
 
 	// TODO use this method to check that result of operation is also in
@@ -74,8 +89,14 @@ public class SimpleCalc {
 	// If division by zero is performed, catch original exception and create
 	// new SimpleCalcException with message "division by zero" and add
 	// original division exception as a cause for it.
-	private static int validateOutput(int a, int b, String operation)
+	private static int validateOutput(int a, int b, String operation)throws SimpleCalcException
 			{
 		return 0;
 	}
+	
+	public static void main(String[] args) throws SimpleCalcException{
+		
+		System.out.println(add(6,7));
+		
+		}
 }

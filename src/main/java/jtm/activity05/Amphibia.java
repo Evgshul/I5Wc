@@ -29,6 +29,5 @@ public class Amphibia extends Transport {
 		else return null;
 	}
 	
-	
-	
+		
 }

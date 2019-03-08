@@ -1,47 +1,74 @@
 package jtm.activity06;
 
 public class Human implements Humanoid {
+	
+	private String backpack;
+	boolean isAlive = true;
+	private int weight;
+	
+	
+	
+
+	public Human() {
+	
+		weight = 42;
+	}
+	
+	public Human(int weight){
+		this.weight=weight;
+	}
 
 	@Override
 	public int getWeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return weight;
 	}
 
 	@Override
 	public void setWeight(int weight) {
-		// TODO Auto-generated method stub
+		this.weight=weight;
+		
 
 	}
 
 	@Override
 	public String killHimself() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		isAlive=false;
+		
+		return isAlive();
 	}
 
 	@Override
 	public int getArmCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return ARM_COUNT;
 	}
 
 	@Override
-	public Object getBackpack() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getBackpack() {
+		
+		return backpack;
 	}
 
 	@Override
 	public void setBackpack(String item) {
-		// TODO Auto-generated method stub
+		this.backpack=item;
+		
+		
 
 	}
 
 	@Override
 	public String isAlive() {
 		// TODO Auto-generated method stub
-		return null;
+		if(isAlive==true)return "Alive";
+		else
+		return "Dead";
 	}
 
+	@Override
+	public String toString() {
+	    return this.getClass().getSimpleName() + weight + " [" + backpack + "]";
+	}
 }

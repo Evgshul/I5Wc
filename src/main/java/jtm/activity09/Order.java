@@ -25,9 +25,11 @@ package jtm.activity09;
  * 
  */
 
-public class Order {
+public class Order implements Iterator<Order> {
 	String customer; // Name of the customer
 	String name; // Name of the requested item
 	int count; // Count of the requested items
+	
+	
 
 }
