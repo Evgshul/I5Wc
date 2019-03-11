@@ -51,7 +51,9 @@ public class ChatServer implements Runnable {
 			try{
 				server = new ServerSocket(port);
 				socket = server.accept();
-				connections.add(new ChatServer(socket));
+				//connections.add(new ChatServer(socket));
+				t = new Thread(new ChatServer(socket));
+				t.start();
 			
 			}catch(IOException e){
 				e.printStackTrace();
@@ -80,6 +82,26 @@ public class ChatServer implements Runnable {
 		while(true){
 			
 		//client =
+			String message = in.nextLine();
+			
+			if(message.equals("quit")||message.equals("exit") )break;
+			
+			for(ChatServer ch:connections){
+				ch.sendMsg(message);
+			}
+			
+			in.close();
+			out.close();
+			
+			try {
+				client.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			connections.remove(this);
+			
 		}
 		
 		
@@ -111,6 +133,9 @@ public class ChatServer implements Runnable {
 		// with auto flush option (or use flush() method)
 			// TODO handle exceptions
 		try{
+			
+//			this.client = client;
+  //          connections.add(this);
 		client = server.accept();
 		connections.add(new ChatServer(client));
 	    in = new Scanner(new InputStreamReader(client.getInputStream())); 
@@ -133,6 +158,8 @@ public class ChatServer implements Runnable {
 	 * @param msg
 	 */
 	public void sendMsg(String msg) {
+		
+		System.out.println(msg);
 		// TODO print passed message into output stream (out) with writer of
 		// current
 		// object
