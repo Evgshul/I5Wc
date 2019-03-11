@@ -77,11 +77,12 @@ public class StreamEditor {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		BufferedReader in2 = new BufferedReader(new FileReader(new File(args[2])));
 		
-		if(in2.equals("-") 
-		File file = new File(inFileName);
-		if(file.exists())file=new File(in.readLine());
+		/*if(in2.equals("-") inFileName = in.readLine();
+		else inFile=
+		inFile = new File(inFileName);
+		if(file.exists())file=new File(in.readLine());*?
 		
-		BufferedReader in2 = new BufferedReader(new FileReader(new File(args[2])));
+		//BufferedReader in2 = new BufferedReader(new FileReader(new File(args[2])));
 		
 		/*- TODO Initialize new buffered character writer (PrintWriter) and:
 		 *  1. If output file name (4th parameter) is "-", add writer to the standard output (System.out)

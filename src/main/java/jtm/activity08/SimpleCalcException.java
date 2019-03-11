@@ -2,28 +2,28 @@ package jtm.activity08;
 
 public class SimpleCalcException extends Exception {
 
-	public SimpleCalcException() {
+	//public SimpleCalcException() {
 		// TODO Auto-generated constructor stub
-	}
+//	}
 
 	public SimpleCalcException(String arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
 
-	public SimpleCalcException(Throwable arg0) {
-		super(arg0);
+	//public SimpleCalcException(Throwable arg0) {
+	//	super(arg0);
 		// TODO Auto-generated constructor stub
-	}
+	//}
 
 	public SimpleCalcException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 		// TODO Auto-generated constructor stub
 	}
 
-	public SimpleCalcException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
-		super(arg0, arg1, arg2, arg3);
+	//public SimpleCalcException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
+	//	super(arg0, arg1, arg2, arg3);
 		// TODO Auto-generated constructor stub
-	}
+	//}
 
 }

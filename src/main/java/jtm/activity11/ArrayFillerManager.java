@@ -24,7 +24,16 @@ public class ArrayFillerManager {
 		// initialize array with passed size
 		// initialize list of threads
 		// return reference to the initialized array
-		return null;
+		array = new int[arraySize];
+	
+		
+		ArrayFillerManager.latency=latency;
+		ArrayFillerManager.minValue = minValue;
+		ArrayFillerManager.maxValue = maxValue;
+		
+		threads = new LinkedList<>();		
+		
+		return array;
 	}
 
 	public static void fillStupidly() {
@@ -35,7 +44,17 @@ public class ArrayFillerManager {
 		// current (main) thread.
 		// Note that this method emulates, what would happen if you would send
 		// just small portions of data through media with latency.
+		
+		
+		for(int i = 0;i<array.length;i++){
+			ArrayFiller arrayfiller = new ArrayFiller(latency,minValue,maxValue,i,i);
+			 arrayfiller.run();
+		}
+		
+		
 	}
+
+	
 
 	public static void fillSequentially() {
 		// TODO create cycle which creates one ArrayFiller object
@@ -44,9 +63,16 @@ public class ArrayFillerManager {
 		// Note that this method emulates, what would happen if you would do
 		// proper "buffering" with large amount of data, but do execution just
 		// in single thread.
+		
+		//for(int i=0;i<array.length;i++){
+			ArrayFiller arrayfiller = new ArrayFiller(latency,minValue,maxValue);
+			 arrayfiller.run();
+			
+		//}
+		
 	}
 
-	public static void fillParalelly() {
+	public static void fillParalelly() throws InterruptedException {
 		// TODO create cycle which creates new ArrayFiller objects
 		// with any range and pass them as references to the Thread constructor.
 		// Add newly created Thread objects into threads list and start them
@@ -59,6 +85,29 @@ public class ArrayFillerManager {
 		// actually finished by calling .join() method for them.
 		// Note that this method emulates, what would happen if you do proper
 		// buffering and scaling of the execution.
+		
+		int range =  (array.length-1)/20;
+
+		
+		
+		for(int i=0;i<array.length;i+=range){
+		
+		ArrayFiller arrayfiller = new ArrayFiller(latency,minValue,maxValue,i,range);
+		
+		Thread thread = new Thread(arrayfiller);
+		
+		threads.add(thread);
+		
+			
+		}
+		
+		for(int i=0;i<threads.size();i++){
+			threads.get(i).start();
+		}
+		
+		for(int i=0;i<threads.size();i++){
+			threads.get(i).join();
+		}
 
 	}
 

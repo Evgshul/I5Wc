@@ -1,6 +1,8 @@
 package jtm.activity12;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,19 +32,40 @@ public class ChatServer implements Runnable {
 	 */
 	public static void main(String[] args) {
 		// TODO 1. initialize vector of connections
+		connections = new Vector<ChatServer>();
+		System.out.println("server started");
+		/*try{
+			server = new ServerSocket(9999);
+			Socket socket = server.accept();
+			connections.add(new ChatServer(socket));
+			
+		}catch(IOException e){
+			e.printStackTrace();
+		}*/
 		// TODO 2. try to create ServerSocket on specified port
 			// TODO 3. handle exceptions (show exception and exit with error
 			// status)
 		Socket socket = null;
 		Thread t = null;
 		while (true) {
-			// TODO 1. Try to initialize client Socket in infinite loop with
+			try{
+				server = new ServerSocket(port);
+				socket = server.accept();
+				connections.add(new ChatServer(socket));
+			
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+			
+			
+			// TODO 1. Try to initialize client Socket in infinite loop wi	th
 			// server.accept() method
 				// TODO 2. handle exceptions
 			// TODO 3. if socket is initialized successfully, create new Thread
 			// passing new ChatServer(socket) as a parameter for it.
 			// Then invoke start() method for this thread
 		}
+		
 	}
 
 	/**
@@ -53,6 +76,13 @@ public class ChatServer implements Runnable {
 	 */
 	@Override
 	public void run() {
+		
+		while(true){
+			
+		//client =
+		}
+		
+		
 		// TODO try to read lines in loop from the input reader of the
 		// client and
 		// write it to all clients (including current client) in form:
@@ -80,6 +110,21 @@ public class ChatServer implements Runnable {
 		// HINT: to see output for each entered message, construct PrintWriter
 		// with auto flush option (or use flush() method)
 			// TODO handle exceptions
+		try{
+		client = server.accept();
+		connections.add(new ChatServer(client));
+	    in = new Scanner(new InputStreamReader(client.getInputStream())); 
+		out = new PrintWriter(client.getOutputStream());
+		out.flush();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
 	}
 
 	/**

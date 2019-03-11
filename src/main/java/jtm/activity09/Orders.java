@@ -40,11 +40,11 @@ public class Orders implements Iterator<Order> {
 	
 	List<Order> orders;
 	int index=-1;
-	Iterator iterator;
+	Iterator<Order> iterator;
 	
 	
 	public Orders(){
-		orders = new LinkedList<Order>();
+		this.orders = new LinkedList<Order>();
 		iterator=orders.iterator();
 	}
 	@Override
