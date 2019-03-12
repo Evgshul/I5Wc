@@ -1,4 +1,7 @@
-package jtm.activity13;
+package jtm.activity14;
+
+// This class is used as a definition for persistent objects
+// Do not change this class
 
 public class Teacher {
 
@@ -19,18 +22,19 @@ public class Teacher {
 
 	public String getFirstName() {
 		// TODO return required value
-		return "firstName";
+		return "Name";
 	}
 
 	public String getLastName() {
 		// TODO return required value
-		return "lastName";
+		return "Surname";
 	}
 
 	// TODO
 	// Override toString() method which returns teacher in form "Name Surname"
 	@Override
 	public String toString() {
-		return firstName + " " + lastName;
+		return firstName+" "+ lastName;
 	}
+
 }

@@ -24,39 +24,35 @@ public class ChatServer implements Runnable {
 	private Scanner in; // for reading from client socket
 	private PrintWriter out; // for writing to client socket
 
+	
+	
 	/**
 	 * This is entry point to start Chat Server. Note that this method do not
 	 * use behavior which is implemented for Runnable interface.
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)throws IOException{
 		// TODO 1. initialize vector of connections
 		connections = new Vector<ChatServer>();
-		System.out.println("server started");
-		/*try{
-			server = new ServerSocket(9999);
-			Socket socket = server.accept();
-			connections.add(new ChatServer(socket));
-			
-		}catch(IOException e){
-			e.printStackTrace();
-		}*/
+		server = new ServerSocket(port);
+		
+		
 		// TODO 2. try to create ServerSocket on specified port
 			// TODO 3. handle exceptions (show exception and exit with error
 			// status)
 		Socket socket = null;
 		Thread t = null;
 		while (true) {
-			try{
-				server = new ServerSocket(port);
-				socket = server.accept();
-				//connections.add(new ChatServer(socket));
-				t = new Thread(new ChatServer(socket));
-				t.start();
+					
 			
-			}catch(IOException e){
-				e.printStackTrace();
+				socket = server.accept();
+				if(socket.isConnected()){
+				
+				t = new Thread(new ChatServer(socket));
+				t.start();}		
+			
+			}
 			}
 			
 			
@@ -66,9 +62,9 @@ public class ChatServer implements Runnable {
 			// TODO 3. if socket is initialized successfully, create new Thread
 			// passing new ChatServer(socket) as a parameter for it.
 			// Then invoke start() method for this thread
-		}
 		
-	}
+		
+	
 
 	/**
 	 * This method processes each connected client and writes received messages
@@ -79,30 +75,32 @@ public class ChatServer implements Runnable {
 	@Override
 	public void run() {
 		
-		while(true){
-			
-		//client =
-			String message = in.nextLine();
-			
-			if(message.equals("quit")||message.equals("exit") )break;
-			
-			for(ChatServer ch:connections){
-				ch.sendMsg(message);
-			}
-			
-			in.close();
-			out.close();
-			
+					
+		 while (true) {
+			 
+			 String line = in.nextLine();
+			 if (line.equals("quit") || line.equals("exit")) {
+			 
+			 break;
+			  }
+	for (int i = 0; i < connections.size(); i++) {
+          connections.get(i).sendMsg(line);
+			  }
+			     }
+			this.in.close();
+			this.out.close();
+			 
 			try {
-				client.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			  client.close();
+			  }
+			   catch (IOException e) {
+			                           
+			         e.printStackTrace();
+			                }
+			    connections.remove(this);
+			           }
 			
-			connections.remove(this);
-			
-		}
+		
 		
 		
 		// TODO try to read lines in loop from the input reader of the
@@ -118,32 +116,30 @@ public class ChatServer implements Runnable {
 			// and
 			// remove current object reference from connections collection
 			// and handle exceptions for these operations, if necessary
-	}
+	
 
 	/**
 	 * This constructor is used to pass client Socket reference for new thread
 	 * 
 	 * @param client
 	 */
-	ChatServer(Socket client) {
+	ChatServer(Socket client) throws IOException {
 		// TODO 1. save passed client socket reference into current object
 		// TODO 2. Add newly created ChatServer into connections collection
 		// TODO 3. Try to add input and output streams to the client socket
 		// HINT: to see output for each entered message, construct PrintWriter
 		// with auto flush option (or use flush() method)
 			// TODO handle exceptions
-		try{
+		
 			
-//			this.client = client;
-  //          connections.add(this);
-		client = server.accept();
-		connections.add(new ChatServer(client));
+			this.client = client;
+            connections.add(this);
+		//client = server.accept();
+		//connections.add(new ChatServer(client));
 	    in = new Scanner(new InputStreamReader(client.getInputStream())); 
-		out = new PrintWriter(client.getOutputStream());
+		out = new PrintWriter(client.getOutputStream(),true);
 		out.flush();
-		}catch(IOException e){
-			e.printStackTrace();
-		}
+		
 		
 		
 		
@@ -159,7 +155,7 @@ public class ChatServer implements Runnable {
 	 */
 	public void sendMsg(String msg) {
 		
-		System.out.println(msg);
+		System.out.println("> " + msg);
 		// TODO print passed message into output stream (out) with writer of
 		// current
 		// object
