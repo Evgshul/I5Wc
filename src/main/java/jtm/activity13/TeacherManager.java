@@ -13,8 +13,8 @@ import java.util.List;
 
 public class TeacherManager {
 
-	private static final Connection con = null;
-	protected Connection conn;
+//	private static final Connection con = null;
+	protected Connection conn = null;
 
 
 	public TeacherManager()  {
@@ -38,8 +38,8 @@ public class TeacherManager {
 			
 			 Class.forName("com.mysql.jdbc.Driver");
 			 conn = DriverManager.getConnection(url, user, pass);
-			 this.conn=con;
-			 con.setAutoCommit(false);
+			 //this.conn=con;
+			 conn.setAutoCommit(true);
 			 //Statement stmt = con.createStatement();
 
             } catch (Exception e){
@@ -62,11 +62,12 @@ public class TeacherManager {
 		// Hint: Because default database is not set in connection,
 		// use full notation for table "database_activity.Teacher"
 		
-		int nId =0;
-		String firstname="";
-		String lastname="";
+		//int nId =0;
+		String firstname=null;
+		String lastname=null;
+		
 		try{
-			PreparedStatement pStmt = con.prepareStatement("Select * from database_activity.Teacher where id=?");
+			PreparedStatement pStmt = conn.prepareStatement("select * from database_activity.Teacher where id = ?");
 			
 			pStmt.setInt(1, id);
 			
@@ -75,19 +76,22 @@ public class TeacherManager {
 		
 				 
 		while(rs.next()){
-				nId = rs.getInt(1);
+				//nId = rs.getInt(1);
 				
-				firstname = rs.getString(2);
-				lastname = rs.getString(3);
-				
-				
+				firstname = rs.getString("firstName");
+				lastname = rs.getString("lastName");
+						
 		}
+		if(firstname != null && lastname != null) {
+		  return new Teacher(id, firstname, lastname);
+			                         }
+		
 		}
 		catch(Exception e)
 		{
 			
 		e.printStackTrace();}
-		return new Teacher(nId,firstname,lastname);
+		return new Teacher(0,null,null);
 	}
 
 	/**
@@ -109,22 +113,30 @@ public class TeacherManager {
 		List<Teacher> teacher = new ArrayList<Teacher>();
 		
 		try{
-			PreparedStatement pStmt = con.prepareStatement("Select * from database_activity.Teacher where firstname like ?,lastname like ?");
+			PreparedStatement pStmt = conn.prepareStatement("select * from database_activity.Teacher where (firstName like ? and lastName like ?)");
 			
-			pStmt.setString(1, '%' + firstName + '%');
-			pStmt.setString(2, '%' + firstName + '%');
+			pStmt.setString(1, "%" + firstName + "%");
+			pStmt.setString(2, "%" + lastName + "%");
 			
 			ResultSet rs = pStmt.executeQuery();
-			//if(rs.)
+			
+			int nId;
+			String Nfirstname = null;
+			String NlastName = null;
+			
+			
 			while(rs.next()){
 			
-				teacher.add(0, new Teacher(rs.getInt(0),rs.getString(1),rs.getString(2)));;
+				nId = rs.getInt("id");
+				Nfirstname= rs.getString("firstName");
+				NlastName = rs.getString("lastName");
+				teacher.add (new Teacher (nId, Nfirstname, NlastName));
 			}
 		
 					
 		
 		}catch(SQLException e){
-			System.err.println(e);
+			e.printStackTrace();
 		}
 		
 		return teacher;
@@ -142,22 +154,29 @@ public class TeacherManager {
 	 */
 
 	public boolean insertTeacher(String firstName, String lastName) {
-		// TODO #4 Write an sql statement that inserts teacher in database.
-		
-		String sql = "insert into database_activity.Teacher (firstname,lastname) values (?,?)";
-		                 PreparedStatement preparedStatement;
-		                  try {
-		                          preparedStatement = conn.prepareStatement(sql);
-		                         preparedStatement.setString(1, firstName);
-		                          preparedStatement.setString(2, lastName);
-		                          if (preparedStatement.executeUpdate() > 0) {
-		                                  return true;
-		                          }
-		                  } catch (SQLException e) {
-		                          // TODO Auto-generated catch block
-		                          e.printStackTrace();
+		// TODO #4 Write an sql statement that inserts teacher in database.       
+		                 
+  try {
+    	  PreparedStatement pStmt = conn.prepareStatement("insert into database_activity.Teacher (firstName,lastName) values (?,?)");
+		                         
+          pStmt.setString(1, firstName);
+          pStmt.setString(2, lastName);
+          pStmt.executeUpdate();
+		  
+          conn.commit();
+          
+         if (pStmt.executeUpdate() > 0) {
+        	 //conn.commit();
+		     return true;
+		                   
+         
+        }
+         //conn.close();
+		        } catch (SQLException e) {
+		                          
+		              e.printStackTrace();
 		                 }
-		                 return false;
+		                 return true;
 		
 		
 	}
@@ -170,26 +189,33 @@ public class TeacherManager {
 	 */
 	public boolean insertTeacher(Teacher teacher) {
 		// TODO #5 Write an sql statement that inserts teacher in database.
-		 String sql = "insert into database_activity.Teacher (id,firstname,lastname) values (?,?,?)";
-		          PreparedStatement preparedStatement;
-		         try {
-		                     preparedStatement = conn.prepareStatement(sql);
-		                       preparedStatement.setInt(1, teacher.getID());
-		                        preparedStatement.setString(2, teacher.getFirstName());
-		                       preparedStatement.setString(3, teacher.getLastName());
-		                       if (preparedStatement.executeUpdate() > 0) {
-		                                  return true;
-		                         }
-		                } catch (SQLException e) {
-		                          // TODO Auto-generated catch block
-		                          e.printStackTrace();
+
+		          
+try {
+	PreparedStatement pStmt = conn.prepareStatement("insert into database_activity.Teacher (id,firstName,lastName) values (?,?,?)");		        	 
+		        	 
+		        	 
+		                    
+	 pStmt.setInt(1, teacher.getID());
+	 pStmt .setString(2, teacher.getFirstName());
+	 pStmt.setString(3, teacher.getLastName());
+		                   
+	 pStmt.executeUpdate();
+	   
+
+	// conn.commit();
+     
+	//if (pStmt.executeUpdate() > 0) {
+		 //conn.commit();
+	//	 return true;}
+		              
+	
+	
+		    } catch (SQLException e) {
+		                          
+		      e.printStackTrace();
 		                 }
-		
-		
-		
-		
-		
-		
+			
 		return false;
 	}
 
@@ -202,23 +228,28 @@ public class TeacherManager {
 	 * @return true if row was updated.
 	 */
 	public boolean updateTeacher(Teacher teacher) {
-		boolean status = false;
+		//boolean status = false;
 		
-	              String sql = "UPDATE database_activity.Teacher SET firstname = ?, lastname = ? WHERE id = ?";
-         PreparedStatement preparedStatement;
+	              
          try {
-                preparedStatement = conn.prepareStatement(sql);
-                 preparedStatement.setString(2, teacher.getLastName());
-                preparedStatement.setString(1, teacher.getFirstName());
-                 preparedStatement.setInt(3, teacher.getID());
-                 if (preparedStatement.executeUpdate() > 0) {
-                        status = true;
+        	 PreparedStatement pStmt = conn.prepareStatement("update database_activity.Teacher set firstname = ?, lastname = ? where id = ?");
+        	
+        	     pStmt.setString(1, teacher.getFirstName());
+                 pStmt.setString(2, teacher.getLastName());
+                 pStmt.setInt(3, teacher.getID());
+                 //pStmt.executeUpdate();
+                 if (pStmt.executeUpdate() > 0) {
+                // status = true;
+                	// conn.commit();
+                	 return true;
                  }
+                 //conn.close();
          } catch (SQLException e) {
 
                 e.printStackTrace();
        }
-        return status;
+        //return status;
+         return false;
 		
 		
 		
@@ -241,14 +272,22 @@ public class TeacherManager {
 		// TODO #7 Write an sql statement that deletes teacher from database.
 		
 		try {
-            PreparedStatement pStmt = conn.prepareStatement("delete from account where id = ?");
+            PreparedStatement pStmt = conn.prepareStatement("delete from database_activity.Teacher where id = ?");
 
             pStmt.setInt(1, id);
-            pStmt.executeUpdate();	
-            conn.commit();
+            
+          //  conn.commit();
+            
+       if(pStmt.executeUpdate()>0)
+            	{//conn.commit();
+            	return true;	}
+           
+       
+       
+       closeConnecion();
         } catch (SQLException e) {
 
-	        System.err.println(e);
+	        e.printStackTrace();
 
                 }
 		
@@ -262,11 +301,11 @@ public class TeacherManager {
 		// TODO Close connection if and reset it to release connection to the
 		// database server
 		
-		if (conn != null) {	
+		if (conn!=null) {	
 		      try {
 		        conn.close();
-		       } catch (SQLException e) {
-			                                 // TODO Auto-generated catch block
+		       } catch (Exception e) {
+			                                 
 		         e.printStackTrace();
 		    }
 		    conn = null;

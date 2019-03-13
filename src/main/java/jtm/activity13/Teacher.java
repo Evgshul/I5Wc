@@ -9,6 +9,9 @@ public class Teacher {
 	// TODO process passed values
 
 	public Teacher(int id, String firstName, String lastName) {
+		this.id=id;
+		this.firstName=firstName;
+		this.lastName=lastName;
 	}
 
 	public int getID() {
@@ -19,12 +22,12 @@ public class Teacher {
 
 	public String getFirstName() {
 		// TODO return required value
-		return "firstName";
+		return firstName;
 	}
 
 	public String getLastName() {
 		// TODO return required value
-		return "lastName";
+		return lastName;
 	}
 
 	// TODO
