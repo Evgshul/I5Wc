@@ -22,19 +22,19 @@ public class Teacher {
 
 	public String getFirstName() {
 		// TODO return required value
-		return "Name";
+		return firstName;
 	}
 
 	public String getLastName() {
 		// TODO return required value
-		return "Surname";
+		return lastName;
 	}
 
 	// TODO
 	// Override toString() method which returns teacher in form "Name Surname"
-	@Override
-	public String toString() {
-		return firstName+" "+ lastName;
-	}
+	//@Override
+	//public String toString() {
+	//	return firstName+" "+ lastName;
+	//}
 
 }

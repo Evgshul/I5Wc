@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.List;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 
 
+private static Logger log = Logger.getLogger(StudentManager.class);
 
 public class TeacherManager {
 

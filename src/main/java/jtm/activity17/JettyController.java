@@ -1,13 +1,8 @@
 package jtm.activity17;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jtm.activity13.Teacher;
-import jtm.activity13.TeacherManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/", produces = "text/html;charset=UTF-8")
 public class JettyController {
 
-	TeacherManager manager;
+	//TeacherManager manager = new TeacherManager();
 
 	/**
 	 * method which is invoked when root folder (i.e. http://localhost:8080/) of
@@ -47,11 +42,32 @@ public class JettyController {
 	}
 
 	// TODO Implement insertTeacher() method
-	public String insertTeacher() {
-		return "";
+	@GetMapping("/insertTeacher")
+	///@RequestMapping(value = "/insertTeacher", produces = "text/html;charset=UTF-8")
+	
+	@ResponseBody
+	public String insertTeacher(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "surname", required = false) String surname,HttpServletRequest request,
+	HttpServletResponse response) {
+		
+		//if(manager== null)
+			//manager = new TeacherManager();
+	String content = 
+		"<form action=''>"+
+		"Name: <input type='text' name='name' value=''><br/>"+
+		"Surname:<input type='text' name='surname' value=''><br/>"+
+		"<input type='submit' value='Insert'></form><br/>"+
+		"<a href='/'>Back</a>";
+
+	
+	//response.setStatus(HttpServletResponse.SC_OK);
+		
+		
+		return content;
 	}
 
 	// TODO Implement findTeacher() method
+	@GetMapping("/findTeacher")
+	@ResponseBody
 	public String findTeacher() {
 		return "";
 	}
