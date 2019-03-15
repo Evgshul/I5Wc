@@ -65,11 +65,53 @@ public class ColorSlider {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][][grow]", "[][][][][][grow]"));
+
+		final JSlider redSlider_1 = new JSlider();
+		redSlider_1.setValue(0);
+		redSlider_1.setName("redSlider");
+		redSlider_1.setMaximum(255);
+		redSlider_1.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				System.out.println(redSlider_1.getValue());
+				txtTest.setBackground(new Color(redSlider_1.getValue(), txtTest.getBackground().getGreen(),
+						txtTest.getBackground().getBlue()));
+			}
+		});
+		frame.getContentPane().add(redSlider_1, "cell 2 0,growx");
+
+		final JSlider slider_1 = new JSlider();
+		slider_1.setMaximum(255);
+		slider_1.setValue(0);
+		slider_1.setName("greenSlider");
+		slider_1.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				System.out.println(slider_1.getValue());
+				txtTest.setBackground(new Color(txtTest.getBackground().getRed(), slider_1.getValue(),
+						txtTest.getBackground().getBlue()));
+			}
+		});
+		frame.getContentPane().add(slider_1, "cell 2 1,growx");
+
+		final JSlider slider_2 = new JSlider();
+		slider_2.setValue(0);
+		slider_2.setMaximum(255);
+		slider_2.setName("blueSlider");
+		slider_2.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				System.out.println(slider_2.getValue());
+				txtTest.setBackground(new Color(txtTest.getBackground().getRed(), txtTest.getBackground().getGreen(),
+						slider_2.getValue()));
+			}
+		});
+		frame.getContentPane().add(slider_2, "cell 2 2,growx");
 		txtTest = new JTextArea();
+		txtTest.setBackground(Color.BLACK);
 		txtTest.setName("testArea");
 		txtTest.setText("Test area");
 
 		frame.getContentPane().add(txtTest, "cell 0 3 3 3,grow");
+
+		
 
 		// Color labels
 		JLabel lblR = new JLabel("R");
@@ -87,7 +129,6 @@ public class ColorSlider {
 		 * use .setName("name") method to set name property of slider objects as:
 		 * redSlider, greenSlider and blueSlider.
 		 */
-
 
 		// TODO set initial values of sliders to 0 and background to black
 
