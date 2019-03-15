@@ -79,31 +79,31 @@ public class ColorSlider {
 		});
 		frame.getContentPane().add(redSlider_1, "cell 2 0,growx");
 
-		final JSlider slider_1 = new JSlider();
-		slider_1.setMaximum(255);
-		slider_1.setValue(0);
-		slider_1.setName("greenSlider");
-		slider_1.addChangeListener(new ChangeListener() {
+		final JSlider greenslider = new JSlider();
+		greenslider.setMaximum(255);
+		greenslider.setValue(0);
+		greenslider.setName("greenSlider");
+		greenslider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
-				System.out.println(slider_1.getValue());
-				txtTest.setBackground(new Color(txtTest.getBackground().getRed(), slider_1.getValue(),
+				System.out.println(greenslider.getValue());
+				txtTest.setBackground(new Color(txtTest.getBackground().getRed(), greenslider.getValue(),
 						txtTest.getBackground().getBlue()));
 			}
 		});
-		frame.getContentPane().add(slider_1, "cell 2 1,growx");
+		frame.getContentPane().add(greenslider, "cell 2 1,growx");
 
-		final JSlider slider_2 = new JSlider();
-		slider_2.setValue(0);
-		slider_2.setMaximum(255);
-		slider_2.setName("blueSlider");
-		slider_2.addChangeListener(new ChangeListener() {
+		final JSlider blueslider = new JSlider();
+		blueslider.setValue(0);
+		blueslider.setMaximum(255);
+		blueslider.setName("blueSlider");
+		blueslider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
-				System.out.println(slider_2.getValue());
+				System.out.println(blueslider.getValue());
 				txtTest.setBackground(new Color(txtTest.getBackground().getRed(), txtTest.getBackground().getGreen(),
-						slider_2.getValue()));
+						blueslider.getValue()));
 			}
 		});
-		frame.getContentPane().add(slider_2, "cell 2 2,growx");
+		frame.getContentPane().add(blueslider, "cell 2 2,growx");
 		txtTest = new JTextArea();
 		txtTest.setBackground(Color.BLACK);
 		txtTest.setName("testArea");

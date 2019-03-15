@@ -96,7 +96,7 @@ public class JettyController {
 		sb.append("Surname:<input type='text' name='surname' value=''><br/>");
 		sb.append("<input type='submit' value='Find'><br/>");
 		sb.append("<a href='/'>Back</a>");
-		response.setStatus(HttpServletResponse.SC_OK);
+		
 
 		if (name != null && surname != null) {
 			if (name != "" && surname != "") {
@@ -123,6 +123,7 @@ public class JettyController {
 			}
 		}
 		sb.append("<a href='/'>Back</a>\n");
+		response.setStatus(HttpServletResponse.SC_OK);
 		return sb.toString();
 	}
 
